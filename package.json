@@ -41,9 +41,9 @@
 			"url": "https://etherscan.io/address/0x9086c4bb7015c1d6dc79162d02e7e1239c982c01"
 		}
 	],
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"browser": "build/urpflanze.js",
+	"main": "index.js",
+	"module": "esm/index.js",
+	"typings": "index.d.ts",
 	"files": [
 		"build",
 		"dist",
@@ -54,8 +54,7 @@
 	"scripts": {
 		"watch": "ttsc --watch",
 		"lint": "eslint src --ext .ts",
-		"build": "node ./scripts/typescript-build",
-		"build-library": "npm run build && npx webpack --config ./webpack.config.js --mode development && npx webpack --config ./webpack.config.js --mode production && node ./scripts/post-build.js",
+		"build": "rollup -c && node ./scripts/post-build.js",
 		"test": "tap",
 		"generate-docs-references": "node ./scripts/generate-docs-references.js",
 		"serve-docs": "webpack serve --config webpack.config.docs.js",
@@ -64,6 +63,7 @@
 	},
 	"publishConfig": {},
 	"devDependencies": {
+		"@rollup/plugin-typescript": "^8.2.1",
 		"@types/uuid": "^8.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.7.0",
 		"@typescript-eslint/parser": "^4.7.0",
@@ -71,6 +71,11 @@
 		"eslint": "^7.13.0",
 		"eslint-config-prettier": "^6.15.0",
 		"html-webpack-plugin": "^4.5.0",
+		"rollup": "^2.42.4",
+		"rollup-plugin-copy": "^3.4.0",
+		"rollup-plugin-delete": "^2.0.0",
+		"rollup-plugin-node-polyfills": "^0.2.1",
+		"rollup-plugin-uglify": "^6.0.4",
 		"sass": "^1.29.0",
 		"tap": "^14.11.0",
 		"ttypescript": "^1.5.12",

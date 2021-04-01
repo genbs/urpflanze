@@ -1,0 +1,1 @@
+/** Types declarations goes here */
